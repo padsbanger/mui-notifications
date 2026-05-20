@@ -1,10 +1,18 @@
 {
   "name": "mui-notifications",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Application notifications component using Material UI.",
   "type": "module",
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "react",
+    "mui",
+    "material-ui",
+    "notifications",
+    "toast",
+    "dashboard"
   ],
   "main": "./dist/mui-notifications.cjs.js",
   "module": "./dist/mui-notifications.es.js",

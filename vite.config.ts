@@ -28,12 +28,15 @@ export default defineConfig({
         'react/jsx-runtime',
         '@mui/material',
         '@mui/system',
+        '@mui/styles',           
         '@mui/styled-engine',
         '@mui/utils',
         '@mui/base',
         '@emotion/react',
         '@emotion/styled',
         '@emotion/cache',
+        '@material-ui/styles',
+        '@material-ui/core',
       ],
       output: {
         globals: {

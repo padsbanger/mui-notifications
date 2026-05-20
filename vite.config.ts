@@ -5,10 +5,13 @@ import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [
-    react(),  
+    react({
+      jsxRuntime: 'automatic',
+    }),  
     dts({ 
       include: ['lib'],
-      tsconfigPath: './tsconfig-build.json', 
+      tsconfigPath: './tsconfig-build.json',
+      insertTypesEntry: true,
      })
   ],
   build: {
@@ -19,7 +22,19 @@ export default defineConfig({
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: ['react', 'react/jsx-runtime', 'react-dom'], // Don't bundle React
+      external: [
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        '@mui/material',
+        '@mui/system',
+        '@mui/styled-engine',
+        '@mui/utils',
+        '@mui/base',
+        '@emotion/react',
+        '@emotion/styled',
+        '@emotion/cache',
+      ],
       output: {
         globals: {
           react: 'React',

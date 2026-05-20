@@ -1,6 +1,6 @@
 {
   "name": "mui-notifications",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Application notifications component using Material UI.",
   "type": "module",
   "files": [

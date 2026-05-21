@@ -29,48 +29,7 @@ type DemoEvent = {
   label: string
 }
 
-const theme = createTheme({
-  palette: {
-    mode: 'light',
-    primary: {
-      main: '#0f766e',
-    },
-    secondary: {
-      main: '#c2410c',
-    },
-    background: {
-      default: '#f4efe6',
-      paper: '#fffdf8',
-    },
-  },
-  shape: {
-    borderRadius: 20,
-  },
-  typography: {
-    fontFamily: '"Plus Jakarta Sans", "Segoe UI", sans-serif',
-    h2: {
-      fontWeight: 700,
-      letterSpacing: '-0.04em',
-    },
-    h5: {
-      fontWeight: 700,
-    },
-    button: {
-      textTransform: 'none',
-      fontWeight: 700,
-    },
-  },
-  components: {
-    MuiCard: {
-      styleOverrides: {
-        root: {
-          border: '1px solid rgba(15, 23, 42, 0.08)',
-          boxShadow: '0 18px 45px rgba(15, 23, 42, 0.08)',
-        },
-      },
-    },
-  },
-})
+
 
 function DemoPanel() {
   const { show, close } = useNotifications()
@@ -251,9 +210,6 @@ function DemoPanel() {
                   <Button variant="outlined" color="secondary" onClick={closePersistent}>
                     Close persistent toast
                   </Button>
-                  <Button variant="contained" color="secondary" onClick={queueBurst}>
-                    Queue 3 notifications
-                  </Button>
                 </Stack>
               </Stack>
             </CardContent>
@@ -295,7 +251,7 @@ function DemoPanel() {
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <CssBaseline />
       <NotificationsProvider
         slotProps={{
@@ -309,7 +265,7 @@ function App() {
       >
         <DemoPanel />
       </NotificationsProvider>
-    </ThemeProvider>
+    </>
   )
 }
 

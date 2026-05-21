@@ -2,6 +2,8 @@
 
 Application notifications component using Material UI. Imperative APIs to show and interact with application notifications.
 
+#[[Demo](http://michal-lach.pl/mui-notifications/)]
+
 ### Install
 
 Make sure you have **@mui/material** in your project, then:

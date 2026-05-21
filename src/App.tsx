@@ -13,9 +13,7 @@ import {
   ListItem,
   ListItemText,
   Stack,
-  ThemeProvider,
   Typography,
-  createTheme,
 } from '@mui/material'
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded'
 import ErrorOutlineRoundedIcon from '@mui/icons-material/ErrorOutlineRounded'
@@ -120,19 +118,6 @@ function DemoPanel() {
     close(persistentKey)
     addEvent('Persistent toast closed manually', persistentKey)
     setPersistentKey(null)
-  }
-
-  const queueBurst = () => {
-    ;[
-      ['Queued build started.', 'info'],
-      ['Design review approved.', 'success'],
-      ['Billing card expires this week.', 'warning'],
-    ].forEach(([message, severity]) => {
-      const id = show(message, {
-        severity: severity as 'info' | 'success' | 'warning',
-      })
-      addEvent(`Queued ${severity} toast`, id)
-    })
   }
 
   return (

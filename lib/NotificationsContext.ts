@@ -1,16 +1,6 @@
 import * as React from "react";
 
-import type {
-  CloseAllNotifications,
-  CloseNotification,
-  ShowNotification,
-} from "./useNotifications";
-
-export interface NotificationsContextValue {
-  show: ShowNotification;
-  close: CloseNotification;
-  closeAll: CloseAllNotifications;
-}
+import type { NotificationsContextValue } from "./NotificationsContext.types";
 
 export const NotificationsContext =
   React.createContext<NotificationsContextValue | null>(null);

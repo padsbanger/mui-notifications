@@ -30,9 +30,31 @@ Now you can get access to the notifications APIs through the `useNotifications` 
 import { useNotifications } from 'mui-notifications';
 
 function MyApp() {
-  const { show, close } = useNotifications();
+  const { show, close, closeAll } = useNotifications();
   // ...
 }
+```
+
+Provider options:
+
+- `maxSnack?: number`
+  Maximum number of notifications shown at the same time. Defaults to `1`.
+- `anchorOrigin?: { vertical: 'top' | 'bottom'; horizontal: 'left' | 'center' | 'right' }`
+  Where notifications are stacked. Defaults to MUI Snackbar's bottom-left placement.
+- `defaultSeverity?: 'info' | 'warning' | 'error' | 'success'`
+  Default severity for notifications that do not pass a `severity`.
+- `defaultAutoHideDuration?: number | null`
+  Default auto-hide duration for notifications that do not pass `autoHideDuration`.
+
+```tsx
+<NotificationsProvider
+  maxSnack={3}
+  anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+  defaultSeverity="info"
+  defaultAutoHideDuration={4000}
+>
+  {children}
+</NotificationsProvider>
 ```
 
 ### `useNotifications` API
@@ -58,8 +80,8 @@ Available `show` options:
   Custom unique key for the notification. If omitted, one is generated automatically.
 - `severity?: 'info' | 'warning' | 'error' | 'success'`
   Renders the notification as a MUI `Alert` with the selected severity. If omitted, a default snackbar layout is used.
-- `autoHideDuration?: number`
-  Time in milliseconds before the notification closes automatically.
+- `autoHideDuration?: number | null`
+  Time in milliseconds before the notification closes automatically. Use `null` for a persistent notification.
 - `actionText?: React.ReactNode`
   Label for the action button shown when `onAction` is provided.
 - `onAction?: () => void`

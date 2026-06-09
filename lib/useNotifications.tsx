@@ -1,49 +1,16 @@
 import * as React from "react";
 
 import { NotificationsContext } from "./NotificationsContext";
+import { serverNotifications } from "./useNotifications.consts";
+import type { UseNotifications } from "./useNotifications.types";
 
-export interface ShowNotificationOptions {
-  key?: string;
-  severity?: "info" | "warning" | "error" | "success";
-  autoHideDuration?: number;
-  actionText?: React.ReactNode;
-  onAction?: () => void;
-}
-
-export interface ShowNotification {
-  (message: React.ReactNode, options?: ShowNotificationOptions): string;
-}
-
-export interface CloseNotification {
-  (key: string): void;
-}
-
-export interface CloseAllNotifications {
-  (): void;
-}
-
-interface UseNotifications {
-  show: ShowNotification;
-  close: CloseNotification;
-  closeAll: CloseAllNotifications;
-}
-
-let serverNotificationCounter = 0;
-
-const serverNotifications: UseNotifications = {
-  show: (_message, options) => {
-    if (options?.key) {
-      return options.key;
-    }
-
-    serverNotificationCounter += 1;
-
-    return `server-notification-${serverNotificationCounter}`;
-  },
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  close: (_key) => {},
-  closeAll: () => {},
-};
+export type {
+  CloseAllNotifications,
+  CloseNotification,
+  ShowNotification,
+  ShowNotificationOptions,
+  UseNotifications,
+} from "./useNotifications.types";
 
 export function useNotifications(): UseNotifications {
   const context = React.useContext(NotificationsContext);

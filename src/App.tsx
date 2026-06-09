@@ -33,7 +33,7 @@ function DemoPanel() {
   const { show, close } = useNotifications()
   const [persistentKey, setPersistentKey] = useState<string | null>(null)
   const [events, setEvents] = useState<DemoEvent[]>([])
-
+  
   const addEvent = (label: string, id: string) => {
     setEvents((current) => [{ id, label }, ...current].slice(0, 6))
   }

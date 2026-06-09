@@ -37,10 +37,10 @@ function MyApp() {
 
 ### `useNotifications` API
 
-`useNotifications()` returns an object with two methods:
+`useNotifications()` returns an object with three methods:
 
 ```tsx
-const { show, close } = useNotifications();
+const { show, close, closeAll } = useNotifications();
 ```
 
 `show(message, options?)`
@@ -70,6 +70,10 @@ Available `show` options:
 - `key: string`
   Closes a notification by its key.
 
+`closeAll()`
+
+- Closes the currently visible notification and clears any queued notifications.
+
 ### Basic notification
 
 You can notify your users with a neutral message by calling `show`. To have the notification automatically hide, add the `autoHideDuration` option. This expresses the time in milliseconds after which to close the notification.
@@ -92,4 +96,6 @@ const key = show('Storage is reaching its project quota.', {
 });
 
 close(key);
+
+closeAll();
 ```

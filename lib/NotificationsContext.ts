@@ -1,10 +1,15 @@
 import * as React from "react";
 
-import type { CloseNotification, ShowNotification } from "./useNotifications";
+import type {
+  CloseAllNotifications,
+  CloseNotification,
+  ShowNotification,
+} from "./useNotifications";
 
 export interface NotificationsContextValue {
   show: ShowNotification;
   close: CloseNotification;
+  closeAll: CloseAllNotifications;
 }
 
 export const NotificationsContext =

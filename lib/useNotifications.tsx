@@ -18,9 +18,14 @@ export interface CloseNotification {
   (key: string): void;
 }
 
+export interface CloseAllNotifications {
+  (): void;
+}
+
 interface UseNotifications {
   show: ShowNotification;
   close: CloseNotification;
+  closeAll: CloseAllNotifications;
 }
 
 let serverNotificationCounter = 0;
@@ -37,6 +42,7 @@ const serverNotifications: UseNotifications = {
   },
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   close: (_key) => {},
+  closeAll: () => {},
 };
 
 export function useNotifications(): UseNotifications {

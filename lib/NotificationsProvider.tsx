@@ -18,6 +18,7 @@ import useSlotProps from "@mui/utils/useSlotProps";
 import { NotificationsContext } from "./NotificationsContext";
 import useNonNullableContext from "./useNonNullableContext";
 import type {
+  CloseAllNotifications,
   CloseNotification,
   ShowNotification,
   ShowNotificationOptions,
@@ -181,7 +182,23 @@ function NotificationsProvider(props: NotificationsProviderProps) {
     }));
   }, []);
 
-  const contextValue = React.useMemo(() => ({ show, close }), [show, close]);
+  const closeAll = React.useCallback<CloseAllNotifications>(() => {
+    setState((prev) => {
+      if (prev.queue.length === 0) {
+        return prev;
+      }
+
+      return {
+        ...prev,
+        queue: [],
+      };
+    });
+  }, []);
+
+  const contextValue = React.useMemo(
+    () => ({ show, close, closeAll }),
+    [show, close, closeAll],
+  );
 
   return (
     <RootPropsContext.Provider value={props}>
